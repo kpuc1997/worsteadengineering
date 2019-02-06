@@ -13,7 +13,6 @@ import AppAppBar from './modules/views/AppAppBar';
 function Index() {
   return (
     <React.Fragment>
-      <AppAppBar />
       <ProductHero />
       <ProductValues />
       {/*<ProductCategories />*/}
