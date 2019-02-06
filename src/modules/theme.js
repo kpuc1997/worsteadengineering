@@ -1,7 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import green from '@material-ui/core/colors/green';
 import grey from '@material-ui/core/colors/grey';
-import red from '@material-ui/core/colors/red';
+import white from '@material-ui/core/colors/red';
 
 const rawTheme = createMuiTheme({
   palette: {
@@ -14,15 +14,14 @@ const rawTheme = createMuiTheme({
       light: '#fff5f8',
       main: '#1565c0',
       dark: '#e62958',
+      contrastText: '#ffffff',
     },
     warning: {
       main: '#ffc071',
       dark: '#ffb25e',
     },
     error: {
-      xLight: red[50],
-      main: red[500],
-      dark: red[700],
+      main: '#ffffff',
     },
     success: {
       xLight: green[50],

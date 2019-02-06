@@ -50,7 +50,8 @@ const styles = {
       flexGrow: 1,
     },
     grow: {
-      flexGrow: 1,
+      flexGrow: 0.9,
+      
     },
     menuButton: {
       marginLeft: -12,
@@ -187,10 +188,10 @@ class ConTopBar extends React.Component {
                     </Drawer>
                     </div>
                 </ClickAwayListener>
-                <Typography className={classes.grow} variant="h5" color="inherit" >
-                  Worstead Engineering Technologies
+                <Typography className={classes.grow} variant="h5" color="inherit" align='center'>
+                  Worstead Engineering Technologies  
                 </Typography>
-                <div className={classes.controls}>
+                {/* <div className={classes.controls}>
                     <audio loop id={'audioplayer'} >
                     <source src='http://96.127.183.154/proxy/thotiger?mp=/;' type='audio/mpeg' />
                     </audio>
@@ -200,23 +201,6 @@ class ConTopBar extends React.Component {
                               {playcontrol}
                              </IconButton>
                         </Grid>
-                        {/* <Grid item className={classes.highlight}>
-                            <IconButton color='inherit' onClick={this.popperClick}>
-                            <VolumeHigh id='PopperAnchor' />
-                            <Popper open={this.state.openpopper} anchorEl={document.getElementById('PopperAnchor')}>
-                                <Card elevation={1}>
-                                <CardContent>
-                                <ClickAwayListener onClickAway={this.clickAway}>
-                                <Slider value={10000} min={0} onChange={this.handleVolumeChange} max={22026.5} vertical/>
-                                </ClickAwayListener>
-                                </CardContent>
-                                </Card>
-                            </Popper>
-                            </IconButton>
-                            <input id="vol-control" type="range" min="0" max="100" step="1" oninput="SetVolume(this.value)" onchange="SetVolume(this.value)">
-                            </input>
-                            
-                        </Grid> */}
 
                         <Grid item>
                             <IconButton color='inherit'>
@@ -224,13 +208,9 @@ class ConTopBar extends React.Component {
                             </IconButton>
                         </Grid>
                     </Grid>
-                </div>
+                </div> */}
 
               </Toolbar>
-
-              <div>
-                  {extrainfo}
-              </div>
             </AppBar>
           </div>
         )

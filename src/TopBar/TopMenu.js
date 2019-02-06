@@ -25,6 +25,7 @@ import { connect } from "react-redux";
 import { changePage } from '../actions/action-constructors';
 import theme from '../modules/theme';
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { withRouter } from 'react-router';
 
 const styles = {
     activepage: {
@@ -34,6 +35,13 @@ const styles = {
     item: {
         textDecoration: 'none',
         
+    },
+    menulink: {
+        color: '#ffffff',
+        
+    },
+    nonmenulink: {
+
     },
   };
 
@@ -66,14 +74,23 @@ class ConTopMenu extends React.Component {
 
     render() {
         var list=[];
-        var extension;
-        const { classes } = this.props;
+        var extension, thisColor, thisClass;
+        const { classes, match, location, history } = this.props;
+        
         for (var i=0; i < this.props.pages.length; i++) {
             extension = '/' + this.props.pages[i];
+            if (location.pathname == ('/' + this.props.pages[i])) {
+                thisColor = 'secondary'
+                thisClass = classes.menulink
+            }
+            else {
+                thisColor = 'inherit'
+                thisClass = classes.nonmenulink
+            }
             list.push(
                 <NavLink to={extension} className={classes.item} activeStyle={{backgroundColor: theme.palette.primary.main ,textDecoration: 'none'}}>
                 <MenuItem key={this.props.pages[i]} >
-                <Typography variant='subtitle1'>
+                <Typography variant='subtitle1' color={thisColor} className={thisClass}>
                 {this.props.pages[i]}
                 </Typography>
                 </MenuItem>
@@ -104,8 +121,11 @@ class ConTopMenu extends React.Component {
 
 ConTopMenu.propTypes = {
     classes: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
   };
 
-const TopMenu = connect(mapStateToProps, mapDispatchToProps)(ConTopMenu);
+const TopMenu = withRouter(connect(mapStateToProps, mapDispatchToProps)(ConTopMenu));
 
 export default withStyles(styles)(TopMenu);
