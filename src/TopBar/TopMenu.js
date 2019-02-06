@@ -24,13 +24,17 @@ import Paper from '@material-ui/core/Paper';
 import { connect } from "react-redux";
 import { changePage } from '../actions/action-constructors';
 import theme from '../modules/theme';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 
 const styles = {
     activepage: {
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
-    }
+    },
+    item: {
+        textDecoration: 'none',
+        
+    },
   };
 
 const mapStateToProps = state => {
@@ -55,7 +59,8 @@ class ConTopMenu extends React.Component {
     navClick(page) {
         // this.setState({active: page});
         this.props.drawerOffClick();
-        // this.props.handleNavClick(page);
+        // this.props.handleNavClick(page); onClick={this.props.changePage.bind(this, newpage)} className={classes.activepage}
+        // onClick={this.props.changePage.bind(this, newpage)}
 
     }
 
@@ -64,21 +69,31 @@ class ConTopMenu extends React.Component {
         var extension;
         const { classes } = this.props;
         for (var i=0; i < this.props.pages.length; i++) {
-            if (this.props.active == 'Home') {
-                extension = ''
-            }
-            else {
-                extension = this.props.active
-            }
-            extension = '/' + this.props.active;
-            if (this.props.active == this.props.pages[i]) {
-                var newpage = this.props.pages[i];
-                list.push(<MenuItem key={this.props.pages[i]} onClick={this.props.changePage.bind(this, newpage)} className={classes.activepage}>{this.props.pages[i]}</MenuItem>)
-            }
-            else {
-                var newpage = this.props.pages[i];
-                list.push(<MenuItem key={this.props.pages[i]} onClick={this.props.changePage.bind(this, newpage)}>{this.props.pages[i]}</MenuItem>)
-            }
+            extension = '/' + this.props.pages[i];
+            list.push(
+                <NavLink to={extension} className={classes.item} activeStyle={{backgroundColor: theme.palette.primary.main ,textDecoration: 'none'}}>
+                <MenuItem key={this.props.pages[i]} >
+                <Typography variant='subtitle1'>
+                {this.props.pages[i]}
+                </Typography>
+                </MenuItem>
+                </NavLink>
+                );
+            // if (this.props.active == 'Home') {
+            //     extension = ''
+            // }
+            // else {
+            //     extension = this.props.active
+            // }
+            // extension = '/' + this.props.active;
+            // if (this.props.active == this.props.pages[i]) {
+            //     var newpage = this.props.pages[i];
+            //     list.push(<MenuItem key={this.props.pages[i]}  ><NavLink to={extension} activeClassName='activepage'>{this.props.pages[i]}</NavLink></MenuItem>)
+            // }
+            // else {
+            //     var newpage = this.props.pages[i];
+            //     list.push(<MenuItem key={this.props.pages[i]} ><NavLink to={extension} activeClassName='activepage'>{this.props.pages[i]}</NavLink></MenuItem>)
+            // }
         }
         return(
             list

@@ -28,7 +28,6 @@ class App extends Component {
       <div className="App">
         <TopBar />
 
-        {page}
         <Route exact path="/" component={Home} />
         <Route exact path="/Home" component={Home} />
         <Route exact path="/Greenville" component={Greenville} />
