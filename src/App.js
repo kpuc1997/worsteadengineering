@@ -29,8 +29,8 @@ class App extends Component {
         <TopBar />
 
         <Route exact path="/" component={Home} />
-        <Route exact path="/Home" component={Home} />
-        <Route exact path="/Greenville" component={Greenville} />
+        <Route path="/Home" component={Home} />
+        <Route path="/Greenville" component={Greenville} />
 
       </div>
     </Router>
