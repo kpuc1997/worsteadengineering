@@ -21,6 +21,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import plot from './plot.jpg';
 import logo from './WET.png';
 import Grid from '@material-ui/core/Grid';
+import presentation from './sitepresentation.pptx';
 
 
 
@@ -114,7 +115,7 @@ class GreenvilleTitle extends React.Component {
             <img src={logo} className={classes.logo} />
             <Typography variant='subtitle1' align='center' >
                 Find the presentation here!<br />
-                <a href='./sitepresentation.pptx' download style={{ textDecoration:'none', fontWeight: 'bold' }} >
+                <a href={presentation} download style={{ textDecoration:'none', fontWeight: 'bold' }} >
                     Greenville Chlorothalonil Plant Location
                 </a>
             </Typography>
